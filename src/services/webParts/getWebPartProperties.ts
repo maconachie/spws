@@ -59,16 +59,15 @@ const getWebPartProperties = async ({
         data: [],
       };
     }
+    // Function to get text content of child node or attribute
+    const getChildNodeText = (parent: Element, tagName: string) => {
+      const child = parent.querySelector(tagName);
+      return child ? child.textContent || "" : "";
+    };
 
     // Parse each WebPart node and map to WebPartProperties
     const webPartProperties: WebPartProperties[] = Array.from(allNodes).map(
       (node: Element) => {
-        // Function to get text content of child node or attribute
-        const getChildNodeText = (parent: Element, tagName: string) => {
-          const child = parent.querySelector(tagName);
-          return child ? child.textContent || "" : "";
-        };
-
         return {
           webPartXml: new XMLSerializer().serializeToString(node), // The full XML for the WebPart
 
