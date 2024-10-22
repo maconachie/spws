@@ -2,6 +2,7 @@ import { defaults } from "../..";
 import { SpwsRequest, SpwsError } from "../../classes";
 import { WebServices } from "../../enum";
 import { SpwsResponse } from "../../types";
+import { escapeXml } from "../../utils";
 
 type SaveWebPartProps = {
   pageURL: string; // The relative URL of the Web Part page (e.g., "/sites/mysite/pages/sample.aspx").
@@ -48,7 +49,7 @@ const saveWebPart = async ({
       `<SaveWebPart xmlns="http://microsoft.com/sharepoint/webpartpages">
         <pageUrl>${pageURL}</pageUrl>
         <storageKey>${storageKey}</storageKey>
-        <webPartXml>${webPartXml}</webPartXml>
+        <webPartXml>${escapeXml(webPartXml)}</webPartXml>
         <storage>${storage}</storage>
       </SaveWebPart>`
     );
