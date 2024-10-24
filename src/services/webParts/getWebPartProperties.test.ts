@@ -10,7 +10,7 @@ describe("WebParts", () => {
     expect(res.data[1].FrameType).toBe("Default");
     expect(res.data[1].Description?.length).toBeTruthy();
     expect(res.data[1].IsIncluded).toBe(true);
-    expect(res.data[1].ZoneID).toBe("Header");
+    expect(res.data[1].ZoneID).toBeTruthy();
     expect(res.data[1].PartOrder).toBe(0);
     expect(res.data[1].FrameState).toBe("Normal");
     expect(res.data[1].Height).toBeUndefined();

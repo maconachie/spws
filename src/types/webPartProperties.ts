@@ -6,10 +6,10 @@ type WebPartProperties = {
   xmlns: string; // Default namespace for the WebPart
   ID: string; // ID attribute as a string
   Title?: string; // Title of the WebPart
-  FrameType?: "" | "None" | "TitleAndBorder" | "TitleOnly" | "BorderOnly"; // Type of frame
+  FrameType?: string; // Type of frame
   Description?: string; // Optional description
   IsIncluded: boolean; // Whether the WebPart is included
-  ZoneID?: number; // Zone ID where the WebPart is placed
+  ZoneID?: string; // Zone ID where the WebPart is placed
   PartOrder?: number; // Order of the part in the zone
   FrameState?: string; // State of the frame (e.g., Normal, Minimized)
   Height?: string; // Optional height
@@ -24,7 +24,7 @@ type WebPartProperties = {
   DetailLink?: string; // Optional detail link
   HelpLink?: string; // Optional help link
   HelpMode: string; // Help display mode (e.g., Modeless)
-  Dir?: "" | "None" | "RightToLeft" | "LeftToRight"; // Direction (e.g., Default)
+  Dir?: string; // Direction (e.g., Default)
   PartImageSmall?: string; // Optional small part image
   MissingAssembly?: string; // Missing assembly message
   PartImageLarge?: string; // Optional large part image

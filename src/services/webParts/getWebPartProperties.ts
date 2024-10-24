@@ -7,6 +7,14 @@ type GetWebPartProps = {
   pageURL: string;
   webURL?: string;
 };
+// Define the allowed FrameType values
+type FrameType =
+  | ""
+  | "None"
+  | "TitleAndBorder"
+  | "TitleOnly"
+  | "BorderOnly"
+  | undefined;
 
 export interface Operation extends SpwsResponse {
   data: WebPartProperties[];
@@ -64,7 +72,19 @@ const getWebPartProperties = async ({
       const child = parent.querySelector(tagName);
       return child ? child.textContent || "" : "";
     };
-
+    // Function to validate FrameType
+    const validateFrameType = (frameType: string): FrameType => {
+      const allowedFrameTypes: FrameType[] = [
+        "",
+        "None",
+        "TitleAndBorder",
+        "TitleOnly",
+        "BorderOnly",
+      ];
+      return allowedFrameTypes.includes(frameType as FrameType)
+        ? (frameType as FrameType)
+        : undefined;
+    };
     // Parse each WebPart node and map to WebPartProperties
     const webPartProperties: WebPartProperties[] = Array.from(allNodes).map(
       (node: Element) => {
